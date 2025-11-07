@@ -1,388 +1,446 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guida API Key - AI per Docenti</title>
-<link rel="stylesheet" href="style.css">
-<style>
-.guide-container {
-    max-width: 900px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 12px;
-    padding: 3rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.carousel-container {
-    position: relative;
-    max-width: 100%;
-    margin: 3rem 0;
-    background: #f8f9fa;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.carousel-slide {
-    display: none;
-    width: 100%;
-}
-.carousel-slide.active {
-    display: block;
-}
-.carousel-slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(66, 133, 244, 0.9);
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s;
-    z-index: 10;
-}
-.carousel-btn:hover {
-    background: rgba(66, 133, 244, 1);
-}
-.carousel-btn.prev {
-    left: 1rem;
-}
-.carousel-btn.next {
-    right: 1rem;
-}
-.carousel-indicators {
-    text-align: center;
-    padding: 1rem;
-    background: white;
-}
-.carousel-indicator {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background: #ddd;
-    border-radius: 50%;
-    margin: 0 0.5rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.carousel-indicator.active {
-    background: var(--primary);
-}
-.step {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e0e0e0;
-}
-.step:last-child {
-    border-bottom: none;
-}
-.step h3 {
-    color: var(--dark);
-    margin-bottom: 1rem;
-}
-.step p {
-    color: var(--text);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
-.important-box {
-    background: #fff3cd;
-    border-left: 4px solid var(--accent);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 6px;
-}
-.important-box h4 {
-    color: var(--dark);
-    margin-bottom: 0.5rem;
-}
-.important-box ul {
-    margin-left: 1.5rem;
-}
-.important-box li {
-    margin-bottom: 0.5rem;
-}
-.tip-box {
-    background: #d1ecf1;
-    border-left: 4px solid var(--primary);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 6px;
-}
-.tip-box h4 {
-    color: var(--dark);
-    margin-bottom: 0.5rem;
-}
-.tip-box ul {
-    margin-left: 1.5rem;
-}
-.tip-box li {
-    margin-bottom: 0.5rem;
-}
-.btn-primary {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background 0.3s;
-    margin-top: 1rem;
-}
-.btn-primary:hover {
-    background: #3367d6;
-}
-.troubleshooting-toggle {
-    background: var(--light);
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    margin-top: 3rem;
-    overflow: hidden;
-}
-.troubleshooting-header {
-    padding: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background 0.3s;
-}
-.troubleshooting-header:hover {
-    background: #f0f0f0;
-}
-.troubleshooting-header h3 {
-    color: var(--dark);
-    margin: 0;
-}
-.troubleshooting-arrow {
-    font-size: 1.5rem;
-    transition: transform 0.3s;
-}
-.troubleshooting-arrow.open {
-    transform: rotate(180deg);
-}
-.troubleshooting-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    padding: 0 1.5rem;
-}
-.troubleshooting-content.open {
-    max-height: 1000px;
-    padding: 0 1.5rem 1.5rem 1.5rem;
-}
-.troubleshooting-item {
-    margin-bottom: 2rem;
-}
-.troubleshooting-item:last-child {
-    margin-bottom: 0;
-}
-.troubleshooting-item strong {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--dark);
-}
-.troubleshooting-item p {
-    margin-left: 1.5rem;
-    color: var(--text);
-}
-</style>
-</head>
-<body>
-<nav class="navbar">
-<div class="nav-container">
-<a href="index.html" class="nav-logo">🤖 AI Lab</a>
-<ul class="nav-menu">
-<li><a href="index.html" class="nav-link">Home</a></li>
-<li><a href="materiali-lab.html" class="nav-link">Programma</a></li>
-<li><a href="api-key.html" class="nav-link active">API Key</a></li>
-</ul>
-</div>
-</nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guida API Key - AI per Docenti</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .guide-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 3rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .carousel-container {
+        position: relative;
+        max-width: 100%;
+        margin: 3rem 0;
+        background: #f8f9fa;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      .carousel-slide {
+        display: none;
+        width: 100%;
+      }
+      .carousel-slide.active {
+        display: block;
+      }
+      .carousel-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(66, 133, 244, 0.9);
+        color: white;
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
+        z-index: 10;
+      }
+      .carousel-btn:hover {
+        background: rgba(66, 133, 244, 1);
+      }
+      .carousel-btn.prev {
+        left: 1rem;
+      }
+      .carousel-btn.next {
+        right: 1rem;
+      }
+      .carousel-indicators {
+        text-align: center;
+        padding: 1rem;
+        background: white;
+      }
+      .carousel-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: #ddd;
+        border-radius: 50%;
+        margin: 0 0.5rem;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .carousel-indicator.active {
+        background: var(--primary);
+      }
+      .step {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .step:last-child {
+        border-bottom: none;
+      }
+      .step h3 {
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+      .step p {
+        color: var(--text);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+      .important-box {
+        background: #fff3cd;
+        border-left: 4px solid var(--accent);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 6px;
+      }
+      .important-box h4 {
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+      .important-box ul {
+        margin-left: 1.5rem;
+      }
+      .important-box li {
+        margin-bottom: 0.5rem;
+      }
+      .tip-box {
+        background: #d1ecf1;
+        border-left: 4px solid var(--primary);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 6px;
+      }
+      .tip-box h4 {
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+      .tip-box ul {
+        margin-left: 1.5rem;
+      }
+      .tip-box li {
+        margin-bottom: 0.5rem;
+      }
+      .btn-primary {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: background 0.3s;
+        margin-top: 1rem;
+      }
+      .btn-primary:hover {
+        background: #3367d6;
+      }
+      .troubleshooting-toggle {
+        background: var(--light);
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        margin-top: 3rem;
+        overflow: hidden;
+      }
+      .troubleshooting-header {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s;
+      }
+      .troubleshooting-header:hover {
+        background: #f0f0f0;
+      }
+      .troubleshooting-header h3 {
+        color: var(--dark);
+        margin: 0;
+      }
+      .troubleshooting-arrow {
+        font-size: 1.5rem;
+        transition: transform 0.3s;
+      }
+      .troubleshooting-arrow.open {
+        transform: rotate(180deg);
+      }
+      .troubleshooting-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding: 0 1.5rem;
+      }
+      .troubleshooting-content.open {
+        max-height: 1000px;
+        padding: 0 1.5rem 1.5rem 1.5rem;
+      }
+      .troubleshooting-item {
+        margin-bottom: 2rem;
+      }
+      .troubleshooting-item:last-child {
+        margin-bottom: 0;
+      }
+      .troubleshooting-item strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+      .troubleshooting-item p {
+        margin-left: 1.5rem;
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">🤖 AI Lab</a>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="materiali-lab.html" class="nav-link">Programma</a></li>
+          <li><a href="api-key.html" class="nav-link active">API Key</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<section class="hero" style="padding: 60px 20px;">
-    <div class="hero-content fade-in">
-        <h1 class="hero-title" style="font-size: 2.5rem;">Guida API Key Gemini</h1>
-        <p class="hero-description" style="font-size: 1.1rem;">
-            Crea la tua chiave API gratuita in 2 minuti
+    <section class="hero" style="padding: 60px 20px">
+      <div class="hero-content fade-in">
+        <h1 class="hero-title" style="font-size: 2.5rem">
+          Guida API Key Gemini
+        </h1>
+        <p class="hero-description" style="font-size: 1.1rem">
+          Crea la tua chiave API gratuita in 2 minuti
         </p>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section style="padding: 40px 20px;">
-    <div class="container">
+    <section style="padding: 40px 20px">
+      <div class="container">
         <div class="guide-container">
-            
-            <div class="important-box">
-                <h4>⚠️ Da completare prima del lab</h4>
-                <p>La creazione dell'API key richiede solo 2 minuti ed è prerequisito per tutti i workflow del lab.</p>
+          <div class="important-box">
+            <h4>⚠️ Da completare prima del lab</h4>
+            <p>
+              La creazione dell'API key richiede solo 2 minuti ed è prerequisito
+              per tutti i workflow del lab.
+            </p>
+          </div>
+          <div
+            class="important-box"
+            style="background: #fff3cd; border-left: 4px solid #dc3545"
+          >
+            <h4>🔑 Raccomandazione importante</h4>
+            <p>
+              <strong
+                >Usa il tuo account istituzionale @bertacchi.it per creare l'API
+                Key.</strong
+              >
+            </p>
+            <p>
+              Durante il lab lavoreremo con Apps Script dentro documenti del
+              workspace scolastico. Per evitare potenziali problemi di
+              compatibilità o permessi:
+            </p>
+            <ol style="margin-left: 1.5rem">
+              <li>Esci da tutti gli account Google aperti nel browser</li>
+              <li>
+                Accedi SOLO con il tuo account <strong>@bertacchi.it</strong>
+              </li>
+              <li>Poi procedi con la creazione dell'API Key</li>
+            </ol>
+          </div>
+
+          <h2 style="text-align: center; color: var(--dark); margin: 2rem 0">
+            Guida visuale passo-passo
+          </h2>
+
+          <div class="carousel-container">
+            <div class="carousel-slide active">
+              <img src="images/01.png" alt="Passo 1" />
             </div>
-            <div class="important-box" style="background: #fff3cd; border-left: 4px solid #dc3545;">
-    <h4>🔑 Raccomandazione importante</h4>
-    <p><strong>Usa il tuo account istituzionale @bertacchi.it per creare l'API Key.</strong></p>
-    <p>Durante il lab lavoreremo con Apps Script dentro documenti del workspace scolastico. Per evitare potenziali problemi di compatibilità o permessi:</p>
-    <ol style="margin-left: 1.5rem;">
-        <li>Esci da tutti gli account Google aperti nel browser</li>
-        <li>Accedi SOLO con il tuo account <strong>@bertacchi.it</strong></li>
-        <li>Poi procedi con la creazione dell'API Key</li>
-    </ol>
-</div>
-
-            <h2 style="text-align: center; color: var(--dark); margin: 2rem 0;">Guida visuale passo-passo</h2>
-
-            <div class="carousel-container">
-                <div class="carousel-slide active">
-                    <img src="images/01.png" alt="Passo 1">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/02.png" alt="Passo 2">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/03.png" alt="Passo 3">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/04.png" alt="Passo 4">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/05.png" alt="Passo 5">
-                </div>
-
-                <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
-                <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
-
-                <div class="carousel-indicators">
-                    <span class="carousel-indicator active" onclick="goToSlide(0)"></span>
-                    <span class="carousel-indicator" onclick="goToSlide(1)"></span>
-                    <span class="carousel-indicator" onclick="goToSlide(2)"></span>
-                    <span class="carousel-indicator" onclick="goToSlide(3)"></span>
-                    <span class="carousel-indicator" onclick="goToSlide(4)"></span>
-                </div>
+            <div class="carousel-slide">
+              <img src="images/02.png" alt="Passo 2" />
             </div>
-
-            <div class="tip-box" style="margin-top: 2rem;">
-                <h4>✅ Verifica completata</h4>
-                <p>Una volta cliccato "Create API key", vedrai apparire la tua chiave personale (una stringa lunga di caratteri e numeri).</p>
-                <p><strong>Non serve copiarla ora.</strong> Durante il lab riapriremo questa pagina e la copieremo quando necessario.</p>
+            <div class="carousel-slide">
+              <img src="images/03.png" alt="Passo 3" />
             </div>
-
-            <div class="important-box">
-                <h4>🔒 Sicurezza API Key</h4>
-                <ul>
-                    <li>La tua API key è personale. Non condividerla con altri</li>
-                    <li>Non pubblicarla online o in documenti condivisi pubblicamente</li>
-                    <li>Se pensi sia stata compromessa, revocala da AI Studio e creane una nuova</li>
-                </ul>
+            <div class="carousel-slide">
+              <img src="images/04.png" alt="Passo 4" />
+            </div>
+            <div class="carousel-slide">
+              <img src="images/05.png" alt="Passo 5" />
             </div>
 
-            <div class="tip-box">
-                <h4>💡 Quota Gratuita Gemini API</h4>
-                <p><strong>Gemini 2.0 Flash</strong> ha quota gratuita generosa:</p>
-                <ul>
-                    <li>1500 richieste al giorno (più che sufficienti per uso didattico)</li>
-                    <li>Completamente gratuito</li>
-                    <li>Il limite si resetta ogni 24 ore</li>
-                </ul>
-            </div>
+            <button class="carousel-btn prev" onclick="changeSlide(-1)">
+              ‹
+            </button>
+            <button class="carousel-btn next" onclick="changeSlide(1)">
+              ›
+            </button>
 
-            <div class="step">
-                <h3>✅ Fatto</h3>
-                <p>Hai creato la tua API Key Gemini. Durante il lab useremo questa chiave in tutti i workflow.</p>
-                <a href="materiali-lab.html" class="btn-primary">Vai al programma del lab</a>
+            <div class="carousel-indicators">
+              <span
+                class="carousel-indicator active"
+                onclick="goToSlide(0)"
+              ></span>
+              <span class="carousel-indicator" onclick="goToSlide(1)"></span>
+              <span class="carousel-indicator" onclick="goToSlide(2)"></span>
+              <span class="carousel-indicator" onclick="goToSlide(3)"></span>
+              <span class="carousel-indicator" onclick="goToSlide(4)"></span>
             </div>
+          </div>
 
-            <div class="troubleshooting-toggle">
-                <div class="troubleshooting-header" onclick="toggleTroubleshooting()">
-                    <h3>⚠️ Troubleshooting</h3>
-                    <span class="troubleshooting-arrow" id="arrow">▼</span>
-                </div>
-                <div class="troubleshooting-content" id="troubleshooting-content">
-                    <div class="troubleshooting-item">
-                        <strong>Non riesco a creare il progetto Google Cloud</strong>
-                        <p>Verifica di essere loggato con l'account Google corretto. Alcuni account organizzazione hanno restrizioni. Prova con un account personale Gmail.</p>
-                    </div>
-                    
-                    <div class="troubleshooting-item">
-                        <strong>Errore "Quota exceeded"</strong>
-                        <p>Hai raggiunto il limite giornaliero (1500 richieste). Aspetta 24 ore per il reset.</p>
-                    </div>
-                </div>
+          <div class="tip-box" style="margin-top: 2rem">
+            <h4>✅ Verifica completata</h4>
+            <p>
+              Una volta cliccato "Create API key", vedrai apparire la tua chiave
+              personale (una stringa lunga di caratteri e numeri).
+            </p>
+            <p>
+              <strong>Non serve copiarla ora.</strong> Durante il lab riapriremo
+              questa pagina e la copieremo quando necessario.
+            </p>
+          </div>
+
+          <div class="important-box">
+            <h4>🔒 Sicurezza API Key</h4>
+            <ul>
+              <li>La tua API key è personale. Non condividerla con altri</li>
+              <li>
+                Non pubblicarla online o in documenti condivisi pubblicamente
+              </li>
+              <li>
+                Se pensi sia stata compromessa, revocala da AI Studio e creane
+                una nuova
+              </li>
+            </ul>
+          </div>
+
+          <div class="tip-box">
+            <h4>💡 Quota Gratuita Gemini API</h4>
+            <p><strong>Gemini 2.0 Flash</strong> ha quota gratuita generosa:</p>
+            <ul>
+              <li>
+                1500 richieste al giorno (più che sufficienti per uso didattico)
+              </li>
+              <li>Completamente gratuito</li>
+              <li>Il limite si resetta ogni 24 ore</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <h3>✅ Fatto</h3>
+            <p>
+              Hai creato la tua API Key Gemini. Durante il lab useremo questa
+              chiave in tutti i workflow.
+            </p>
+            <a href="materiali-lab.html" class="btn-primary"
+              >Vai al programma del lab</a
+            >
+          </div>
+
+          <div class="troubleshooting-toggle">
+            <div
+              class="troubleshooting-header"
+              onclick="toggleTroubleshooting()"
+            >
+              <h3>⚠️ Troubleshooting</h3>
+              <span class="troubleshooting-arrow" id="arrow">▼</span>
             </div>
+            <div class="troubleshooting-content" id="troubleshooting-content">
+              <div class="troubleshooting-item">
+                <strong>Non riesco a creare il progetto Google Cloud</strong>
+                <p>
+                  Verifica di essere loggato con l'account Google corretto.
+                  Alcuni account organizzazione hanno restrizioni. Prova con un
+                  account personale Gmail.
+                </p>
+              </div>
 
+              <div class="troubleshooting-item">
+                <strong>Errore "Quota exceeded"</strong>
+                <p>
+                  Hai raggiunto il limite giornaliero (1500 richieste). Aspetta
+                  24 ore per il reset.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<footer class="footer">
-    <p>Lab AI per Docenti - 14 Novembre 2025</p>
-</footer>
+    <footer class="footer">
+      <p>Lab AI per Docenti - 14 Novembre 2025</p>
+    </footer>
 
-<script>
-// Carousel
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const indicators = document.querySelectorAll('.carousel-indicator');
+    <script>
+      // Carousel
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".carousel-slide");
+      const indicators = document.querySelectorAll(".carousel-indicator");
 
-function showSlide(n) {
-    if (n >= slides.length) currentSlide = 0;
-    if (n < 0) currentSlide = slides.length - 1;
-    
-    slides.forEach(slide => slide.classList.remove('active'));
-    indicators.forEach(ind => ind.classList.remove('active'));
-    
-    slides[currentSlide].classList.add('active');
-    indicators[currentSlide].classList.add('active');
-}
+      function showSlide(n) {
+        if (n >= slides.length) currentSlide = 0;
+        if (n < 0) currentSlide = slides.length - 1;
 
-function changeSlide(direction) {
-    currentSlide += direction;
-    showSlide(currentSlide);
-}
+        slides.forEach((slide) => slide.classList.remove("active"));
+        indicators.forEach((ind) => ind.classList.remove("active"));
 
-function goToSlide(n) {
-    currentSlide = n;
-    showSlide(currentSlide);
-}
+        slides[currentSlide].classList.add("active");
+        indicators[currentSlide].classList.add("active");
+      }
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') changeSlide(-1);
-    if (e.key === 'ArrowRight') changeSlide(1);
-});
+      function changeSlide(direction) {
+        currentSlide += direction;
+        showSlide(currentSlide);
+      }
 
-let touchStartX = 0;
-let touchEndX = 0;
+      function goToSlide(n) {
+        currentSlide = n;
+        showSlide(currentSlide);
+      }
 
-document.querySelector('.carousel-container').addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") changeSlide(-1);
+        if (e.key === "ArrowRight") changeSlide(1);
+      });
 
-document.querySelector('.carousel-container').addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    if (touchStartX - touchEndX > 50) changeSlide(1);
-    if (touchEndX - touchStartX > 50) changeSlide(-1);
-});
+      let touchStartX = 0;
+      let touchEndX = 0;
 
-// Troubleshooting toggle
-function toggleTroubleshooting() {
-    const content = document.getElementById('troubleshooting-content');
-    const arrow = document.getElementById('arrow');
-    
-    content.classList.toggle('open');
-    arrow.classList.toggle('open');
-}
-</script>
-</body>
+      document
+        .querySelector(".carousel-container")
+        .addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+      document
+        .querySelector(".carousel-container")
+        .addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) changeSlide(1);
+          if (touchEndX - touchStartX > 50) changeSlide(-1);
+        });
+
+      // Troubleshooting toggle
+      function toggleTroubleshooting() {
+        const content = document.getElementById("troubleshooting-content");
+        const arrow = document.getElementById("arrow");
+
+        content.classList.toggle("open");
+        arrow.classList.toggle("open");
+      }
+    </script>
+  </body>
 </html>
